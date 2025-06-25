@@ -21,9 +21,9 @@ public class Category {
 
     @Size(max=200, message = "Description must be less than 200 characters")
     private String description;
-//One to many says that the one category has many tasks, cascade means if you do crud to a catagory, you crud tasks
+    //One to many says that the one category has many tasks, cascade means if you do crud to a catagory, you crud tasks
     @OneToMany(mappedBy="category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)//tasks won't be loaded from the database unless you do a getter
-    private List<Task> tasks = new ArrayList<>();
+    private List<Task> tasks = new ArrayList<>();//This category has many tasks
     public Category(){}
 
     public Category(String name) {
@@ -42,5 +42,3 @@ public class Category {
     public List<Task> getTasks() { return tasks; }
     public void setTasks(List<Task> tasks) { this.tasks = tasks; }
 }
-
-

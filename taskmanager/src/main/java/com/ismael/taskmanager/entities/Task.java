@@ -3,8 +3,6 @@ package com.ismael.taskmanager.entities;
 import java.time.LocalDateTime;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-
-
 @Entity
 @Table(name="tasks")
 public class Task {
@@ -99,14 +97,10 @@ public class Task {
     public void setAssignedTo(User assignedTo) { this.assignedTo = assignedTo; }
 }
 
-// Enums
-enum TaskStatus {
-    TODO, IN_PROGRESS, DONE
-}
-
 enum Priority {
     LOW, MEDIUM, HIGH
 }
+
 
 
 
