@@ -2,7 +2,6 @@ package com.ismael.taskmanager.entities;
 
 import java.time.LocalDateTime;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 @Entity
 @Table(name="tasks")
 public class Task {
@@ -11,12 +10,9 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)//tells your database: "Hey, automatically assign a new, unique ID to this task when you save it."
     private long id;
 
-    @NotBlank(message = "Title is required")
-    @Size(max = 100, message = "Title must be less that 100 characters")//validation for the user
     @Column(nullable = false, length = 100)//database constraint, the title cannot be empty, and has to be less than 100 characters
     private String title;
 
-    @Size(max = 500, message = "Description must be less than 500 characters")
     @Column(length=500)
     private String description;
 
@@ -28,7 +24,6 @@ public class Task {
     @Column(nullable = false)
     private Priority priority = Priority.MEDIUM;
 
-    @Future(message = "Due date must be in the future") // validation feature for the user that makes sure the date is in the future.
     private LocalDateTime dueDate;
 
     @Column(nullable = false, updatable = false)
@@ -47,6 +42,7 @@ public class Task {
         updatedAt = LocalDateTime.now();
     }
 
+    public Task(){ }
     public Task(String title){
         this.title = title;
         this.status=TaskStatus.TODO;
@@ -97,9 +93,7 @@ public class Task {
     public void setAssignedTo(User assignedTo) { this.assignedTo = assignedTo; }
 }
 
-enum Priority {
-    LOW, MEDIUM, HIGH
-}
+
 
 
 
