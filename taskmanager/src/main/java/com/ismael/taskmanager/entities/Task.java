@@ -76,21 +76,7 @@ public class Task {
     public LocalDateTime getUpdatedAt() { return updatedAt; }
     public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name = "category_id")
-    private Category category;
 
-    // Many tasks can be assigned to one user
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "assigned_to")
-    private User assignedTo;
-
-    // Add getters and setters for new fields
-    public Category getCategory() { return category; }
-    public void setCategory(Category category) { this.category = category; }
-
-    public User getAssignedTo() { return assignedTo; }
-    public void setAssignedTo(User assignedTo) { this.assignedTo = assignedTo; }
 }
 
 
